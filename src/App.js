@@ -4,24 +4,35 @@ import { TodoList } from './TodoList';
 import './App.css';
 import { TodoItem } from './TodoItem';
 import { TodoButtonCreate } from './TodoButtonCreate';
+import React from 'react';
+
+const defaultTodos = [
+   {text: 'Aprender React', completed: false},
+   {text: 'Llorar con la llorona', completed: false},
+   {text: 'Deploy react', completed: false},
+   {text: 'Build React App', completed: false},
+]
 
 function App() {
   return (
-    <div className="App">
+      <React.Fragment>
 
-      <TodoCounter/>
+      <TodoCounter completed={16} total={17}/>
       <TodoSearch />
 
       
       <TodoList>
-        <TodoItem/>
-        <TodoItem/>
-        <TodoItem/>
+        {defaultTodos.map(todo => {
+          return <TodoItem 
+                  key={todo.text} 
+                  text={todo.text}
+                  completed={todo.completed}/>
+        })}
       </TodoList>
 
       <TodoButtonCreate value="Add" />
 
-    </div>
+      </React.Fragment>
   );
 }
 
