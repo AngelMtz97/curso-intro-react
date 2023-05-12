@@ -1,14 +1,14 @@
 import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
-import './App.css';
+import React from 'react';
 import { TodoItem } from './TodoItem';
 import { TodoButtonCreate } from './TodoButtonCreate';
-import React from 'react';
+/* import './App.css'; */
 
 const defaultTodos = [
    {text: 'Aprender React', completed: false},
-   {text: 'Llorar con la llorona', completed: false},
+   {text: 'Llorar con la llorona', completed: true},
    {text: 'Deploy react', completed: false},
    {text: 'Build React App', completed: false},
 ]

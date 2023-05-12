@@ -1,7 +1,10 @@
+import "./TodoButtonCreate.css";
 
 function TodoButtonCreate(props){
     return (
-        <input type="button" value={props.value}/>
+        <div className="btn-container">
+          <button>{props.value}</button>
+        </div>
     );
 }
 

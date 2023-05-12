@@ -1,0 +1,35 @@
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+}
+
+.btn-container button{
+    color: white;
+    background: #3D348B;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #3D348B;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-decoration: none;
+    line-height: 23px;
+    width: 300px;
+    height: 40px;
+    position: fixed;
+    margin-top: 100px;
+}
+
+.btn-container button:hover{
+    transform: translate3d(0, 2px, 0);
+    box-shadow: rgba(118, 120, 237, .3) 15px 28px 25px -18px;
+}
+
+.btn-container button:focus{
+    box-shadow: rgba(118, 120, 237, .5) 2px 8px 4px -6px;
+}
