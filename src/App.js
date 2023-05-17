@@ -26,7 +26,8 @@ function App() {
   const searchedTodos = todos.filter((item) =>{ 
       const todoText = item.text.toLocaleLowerCase();
       const searchText = searchValue.toLocaleLowerCase();
-      return searchValue.trim() !== '' && searchValue.length > 0 && todoText.includes(searchText);
+      // searchValue.trim() !== '' && searchValue.length > 0 && 
+      return todoText.includes(searchText);
   });
 
   const itemDeleteHandler = (value) => {
@@ -45,12 +46,15 @@ function App() {
        setTodos(result);
   }
 
-  console.log('Los usuarios buscan TODOS de '+searchValue)
+  const allTodosCompleted = () => {
+     return completedTodos === totalTodos;
+  }
 
   return (
       <React.Fragment>
 
-      <TodoCounter completed={completedTodos} total={totalTodos}/>
+      { allTodosCompleted() ? <h1>Felicidades has completado todos los TODOs 💚</h1> : <TodoCounter completed={completedTodos} total={totalTodos}/>}
+
       <TodoSearch 
        searchValue={searchValue}
        setSearchValue={setSearchValue}
