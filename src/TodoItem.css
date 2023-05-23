@@ -18,13 +18,22 @@
 }
 
 #btn-delete:hover {
-    background-color: rgba(214, 34, 70, 0.2);
+    fill: #dc3545;
 }
 
 .text-completed {
     text-decoration: line-through;
 }
 
-.btn-completed {
+.btn-complete-check {
+    color: #198754;
+}
+
+.btn-complete-nocheck {
     color: gray;
+}
+
+
+.btn-complete-nocheck:hover{
+    color: #198754;
 }

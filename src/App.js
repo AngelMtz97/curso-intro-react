@@ -47,7 +47,7 @@ function App() {
   }
 
   const allTodosCompleted = () => {
-     return completedTodos === totalTodos;
+     return (completedTodos === totalTodos) && totalTodos !== 0;
   }
 
   return (
