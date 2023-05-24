@@ -14,18 +14,16 @@ import { TodoButtonCreate } from './TodoButtonCreate';
 ] */
 
 function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  let parsedTodos;
 
-     if(!localStorageTodos){
-        parsedTodos = [];
-        localStorage.setItem('TODOS_V1', JSON.stringify(parsedTodos))
-     }else{
-        parsedTodos = JSON.parse(localStorageTodos);
-     }
-  
-
-  const [todos, setTodos] = React.useState(parsedTodos);
+  const [todos, setTodos] = React.useState(() => {
+        const todosFromStorage = window.localStorage.getItem('TODOS_V1');
+        if(!todosFromStorage){
+          window.localStorage.setItem('TODOS_V1', JSON.stringify([]));
+          return [];
+        }else{
+          return JSON.parse(todosFromStorage);
+        }
+  });
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter(item => {
