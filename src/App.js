@@ -13,17 +13,33 @@ import { TodoButtonCreate } from './TodoButtonCreate';
    {text: 'Build React App', completed: false},
 ] */
 
-function App() {
+function useLocalStorage(itemName, initialValue){
+     
+     
+     const localStorageTodos = localStorage.getItem(itemName);
+     
+     let parsedItem;
 
-  const [todos, setTodos] = React.useState(() => {
-        const todosFromStorage = window.localStorage.getItem('TODOS_V1');
-        if(!todosFromStorage){
-          window.localStorage.setItem('TODOS_V1', JSON.stringify([]));
-          return [];
-        }else{
-          return JSON.parse(todosFromStorage);
-        }
-  });
+     if(!localStorageTodos){
+          localStorage.setItem(itemName, JSON.stringify([]));
+     }else {
+          parsedItem = JSON.parse(localStorageTodos);
+     }
+
+     const [item, setItem] = React.useState(parsedItem);
+
+     const saveItem = (newItem) => {
+     
+          localStorage.setItem(itemName, JSON.stringify(newItem));
+          setItem(newItem);
+     }
+
+     return [item, saveItem];
+}
+
+function App() {
+ 
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter(item => {
@@ -59,11 +75,7 @@ function App() {
      return (completedTodos === totalTodos) && totalTodos !== 0;
   }
 
-  const saveTodos = (newTodos) => {
-     
-     localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
-     setTodos(newTodos);
-  }
+ 
 
   return (
       <React.Fragment>
