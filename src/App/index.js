@@ -1,10 +1,6 @@
-import { TodoCounter } from '../TodoCounter';
-import { TodoSearch } from '../TodoSearch';
-import { TodoList } from '../TodoList';
 import React from 'react';
-import { TodoItem } from '../TodoItem';
-import { TodoButtonCreate } from '../TodoButtonCreate';
 import { useLocalStorage } from './useLocalStorage';
+import { AppUI } from './AppUI';
 /* import './App.css'; */
 
 /* const defaultTodos = [
@@ -53,35 +49,20 @@ function App() {
   const allTodosCompleted = () => {
      return (completedTodos === totalTodos) && totalTodos !== 0;
   }
-
  
-
   return (
-      <React.Fragment>
-
-      { allTodosCompleted() ? <h1>Felicidades has completado todos los TODOs 💚</h1> : <TodoCounter completed={completedTodos} total={totalTodos}/>}
-
-      <TodoSearch 
-       searchValue={searchValue}
-       setSearchValue={setSearchValue}
-      />
-
-      
-      <TodoList>
-        {searchedTodos.map(todo => {
-          return <TodoItem 
-                  key={todo.text} 
-                  text={todo.text}
-                  completed={todo.completed}
-                  ondelete={itemDeleteHandler}
-                  oncomplete={itemDoneHandler}/>
-        })}
-      </TodoList>
-
-      <TodoButtonCreate value="Add" />
-
-      </React.Fragment>
+     <AppUI 
+          allTodosCompleted={allTodosCompleted}
+          completedTodos={completedTodos}
+          totalTodos={totalTodos}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          searchedTodos={searchedTodos}
+          itemDeleteHandler={itemDeleteHandler}
+          itemDoneHandler={itemDoneHandler}
+     />
   );
+  
 }
 
 
