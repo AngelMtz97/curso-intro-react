@@ -11,18 +11,17 @@ import { TodoContext } from '../TodoContext';
 
 
 function AppUI(){
+    const {
+        loading,
+        error,
+        allTodosCompleted,
+        searchedTodos,
+        itemDeleteHandler,
+        itemDoneHandler,
+    } = React.useContext(TodoContext);
+
     return (
         <React.Fragment>
-            <TodoContext.Consumer>
-                {({
-                    loading,
-                    error,
-                    allTodosCompleted,
-                    searchedTodos,
-                    itemDeleteHandler,
-                    itemDoneHandler,
-                }) => (
-                    <>
                     { allTodosCompleted() ? <h1>Felicidades has completado todos los TODOs 💚</h1> : <TodoCounter />}
 
                     <TodoSearch />
@@ -41,9 +40,7 @@ function AppUI(){
                                     oncomplete={itemDoneHandler}/>
                         })}
                     </TodoList>
-                    </>
-                )}
-            </TodoContext.Consumer>
+                    
 
         <TodoButtonCreate value="Add" />
         </React.Fragment>
