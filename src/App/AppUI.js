@@ -7,47 +7,45 @@ import { TodosError } from '../TodosError';
 import { EmptyTodos } from '../EmptyTodos';
 import { TodoButtonCreate } from '../TodoButtonCreate';
 import React from 'react';
+import { TodoContext } from '../TodoContext';
 
-function AppUI({
-    loading,
-    error,
-    allTodosCompleted,
-    completedTodos,
-    totalTodos,
-    searchValue,
-    setSearchValue,
-    searchedTodos,
-    itemDeleteHandler,
-    itemDoneHandler
-}){
+
+function AppUI(){
     return (
         <React.Fragment>
+            <TodoContext.Consumer>
+                {({
+                    loading,
+                    error,
+                    allTodosCompleted,
+                    searchedTodos,
+                    itemDeleteHandler,
+                    itemDoneHandler,
+                }) => (
+                    <>
+                    { allTodosCompleted() ? <h1>Felicidades has completado todos los TODOs 💚</h1> : <TodoCounter />}
 
-        { allTodosCompleted() ? <h1>Felicidades has completado todos los TODOs 💚</h1> : <TodoCounter completed={completedTodos} total={totalTodos}/>}
+                    <TodoSearch />
 
-        <TodoSearch 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        />
+                    <TodoList>
+                        {loading && <TodosLoading />}
+                        {error && <TodosError />}
+                        {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
 
-        
-        <TodoList>
-        {loading && <TodosLoading />}
-        {error && <TodosError />}
-        {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
-
-        {searchedTodos.map(todo => {
-            return <TodoItem 
-                    key={todo.text} 
-                    text={todo.text}
-                    completed={todo.completed}
-                    ondelete={itemDeleteHandler}
-                    oncomplete={itemDoneHandler}/>
-        })}
-        </TodoList>
+                        {searchedTodos.map(todo => {
+                            return <TodoItem 
+                                    key={todo.text} 
+                                    text={todo.text}
+                                    completed={todo.completed}
+                                    ondelete={itemDeleteHandler}
+                                    oncomplete={itemDoneHandler}/>
+                        })}
+                    </TodoList>
+                    </>
+                )}
+            </TodoContext.Consumer>
 
         <TodoButtonCreate value="Add" />
-
         </React.Fragment>
     );
 }
