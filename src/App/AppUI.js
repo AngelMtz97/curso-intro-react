@@ -49,7 +49,7 @@ function AppUI(){
 
         {openModal && 
           (<Modal>
-            La funcionalidad de agregar TODO
+              <p>La funcionalidad de agregar TODO</p>
            </Modal>)
 }
         
