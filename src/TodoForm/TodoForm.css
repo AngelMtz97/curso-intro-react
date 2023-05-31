@@ -1,0 +1,103 @@
+
+form {
+  width: 90%;
+  max-width: 300px;
+  display: flex;
+  padding: 10px 80px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+label {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 26px;
+    color: #1E1E1F;
+}
+
+textarea {
+    background-color: #F9FBFC;
+    border: 2px solid #202329;
+    border-radius: 5px;
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.25);
+    color: #1E1E1F;
+    font-size: 20px;
+    text-align: center;
+    padding: 12px;
+    height: 96px;
+    width: calc(150% - 5px);
+}
+
+textarea::placeholder {
+    color: #A5A5A5;
+    font-family: 'Montserrat';
+    font-weight: 400;
+}
+
+textarea:focus {
+    outline-color: #61DAFA;
+}
+
+.TodoForm-buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 14px;
+}
+
+.TodoForm-button{
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 400;
+    color: #202329;
+    line-height: 23px;
+    width: 120px;
+    height: 48px;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    display: inline-block;
+    border: none;
+}
+
+.TodoForm-button--cancel{
+   background: transparent;
+   margin-top: 40px;
+   margin-left: 10px;
+}
+
+.TodoForm-button--cancel:hover{
+    transform: translate3d(0, 2px, 0);
+    box-shadow: rgba(118, 120, 237, .3) 15px 28px 25px -18px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, .2);
+}
+
+.TodoForm-button--cancel:focus{
+    box-shadow: rgba(118, 120, 237, .5) 2px 8px 4px -6px;
+}
+
+.TodoForm-button--add{
+    color: white;
+    background: #3D348B;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #3D348B;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin-top: 40px;
+    margin-right: 10px;
+}
+
+.TodoForm-button--add:hover{
+    transform: translate3d(0, 2px, 0);
+    box-shadow: rgba(118, 120, 237, .3) 15px 28px 25px -18px;
+}
+
+.TodoForm-button--add:focus{
+    box-shadow: rgba(118, 120, 237, .5) 2px 8px 4px -6px;
+}

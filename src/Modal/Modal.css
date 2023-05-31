@@ -1,5 +1,5 @@
 /* The Modal (background) */
-.modal {
+.modal-bg {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -14,18 +14,34 @@
 
   /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color:#fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
+    width: 30%; /* Could be more or less, depending on screen size */
+    min-width: 300px;
+    display: flex;
+    padding: 10px 80px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
   }
+
+  .modal-header{
+    display: flex;
+    flex-direction: row;
+    width: 120%;
+    justify-content: end;
+  } 
+
 
   /* The Close Button */
 .close {
   color: #aaa;
   float: right;
   font-size: 28px;
+  width: 30px;
   font-weight: bold;
 }
 

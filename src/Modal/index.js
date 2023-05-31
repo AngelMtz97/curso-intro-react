@@ -9,12 +9,16 @@ function Modal({children}){
       } = React.useContext(TodoContext);
 
   return ReactDOM.createPortal(
-    <div className="modal" style={{display: openModal ? 'block' : 'none'}}>
+    <div className="modal-bg" style={{display: openModal ? 'block' : 'none'}}>
         <div className="modal-content">
-        <span class="close" onClick={()=>{
-           const modal = document.getElementsByClassName('modal')[0];
-           modal.style.display = "none";
-        }}>&times;</span>
+        <div className="modal-header">
+          <div></div>
+          <span className="close" onClick={()=>{
+            const modal = document.getElementsByClassName('modal-bg')[0];
+            modal.style.display = "none";
+          }}>&times;</span>
+        </div>
+        
         {children}
         </div>
     </div>,
