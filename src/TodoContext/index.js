@@ -38,6 +38,15 @@ function TodoProvider({children}){
          // searchValue.trim() !== '' && searchValue.length > 0 && 
          return todoText.includes(searchText);
      });
+
+     const addTodo = (texto) => {
+            const newTodos = [...todos];
+            newTodos.push({
+                text: texto,
+                completed: false
+            });
+           saveTodos(newTodos);
+     }
    
      const itemDeleteHandler = (value) => {
           const result = todos.filter((item) => {
@@ -72,7 +81,8 @@ function TodoProvider({children}){
             itemDeleteHandler,
             itemDoneHandler,
             openModal,
-            setOpenModal}}>
+            setOpenModal,
+            addTodo}}>
             {children}
         </TodoContext.Provider>
     )
