@@ -1,8 +1,9 @@
 import React from "react";
+import './EmptyTodos.css';
 
-function EmptyTodos(){
+function EmptyTodos({message}){
     return (
-       <p>Crea tu primer TODO</p>
+       <h3>{message}</h3>
     );
 }
 

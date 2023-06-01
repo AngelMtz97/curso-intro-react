@@ -12,6 +12,12 @@ function TodoForm(){
     event.preventDefault();
     addTodo(newTodoValue);
     setOpenModal(false);
+    const listItems = document.getElementsByClassName('item-container');
+    const lastItem = listItems[listItems.length - 1];
+    if(lastItem){
+      lastItem.scrollIntoView({behavior: "smooth"});
+    }
+    
   }
 
   const onCancel = () => {

@@ -18,35 +18,38 @@ function AppUI(){
         error,
         allTodosCompleted,
         searchedTodos,
+        totalTodos,
         itemDeleteHandler,
         itemDoneHandler,
-        openModal,
-        setOpenModal
+        openModal
     } = React.useContext(TodoContext);
 
     return (
         <React.Fragment>
-                    { allTodosCompleted() ? <h1>Felicidades has completado todos los TODOs 💚</h1> : <TodoCounter />}
+                    { !loading && (allTodosCompleted() ? <h1>Felicidades has completado todos los TODOs 💚</h1> : <TodoCounter />) }
 
-                    <TodoSearch />
+                    {!loading && <TodoSearch />}
 
                     <TodoList>
                         {loading && <TodosLoading />}
                         {error && <TodosError />}
-                        {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
+                        {(!loading && searchedTodos.length === 0 && totalTodos > 0) && <EmptyTodos message={"No se encontró el TODO 😕"}/> }
+                        {(!loading && totalTodos === 0) &&<EmptyTodos message={"Crea un nuevo TODO 😏"} />}
 
-                        {searchedTodos.map(todo => {
-                            return <TodoItem 
-                                    key={todo.text} 
-                                    text={todo.text}
-                                    completed={todo.completed}
-                                    ondelete={itemDeleteHandler}
-                                    oncomplete={itemDoneHandler}/>
-                        })}
+                        {
+                         searchedTodos.map(todo => {
+                                return <TodoItem 
+                                        key={todo.text} 
+                                        text={todo.text}
+                                        completed={todo.completed}
+                                        ondelete={itemDeleteHandler}
+                                        oncomplete={itemDoneHandler}/>
+                            })
+                        }
                     </TodoList>
                     
 
-        <TodoButtonCreate value="Agregar" />
+        {!loading && <TodoButtonCreate value="Agregar" />}
 
         {openModal && 
           (<Modal>

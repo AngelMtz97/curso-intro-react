@@ -1,8 +1,9 @@
 import React from "react";
+import './TodosError.css';
 
 function TodosError(){
     return (
-        <p>Error</p>
+        <h3>Ha ocurrido un error</h3>
     );
 }
 

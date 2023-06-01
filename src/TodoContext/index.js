@@ -20,18 +20,6 @@ function TodoProvider({children}){
    
      const totalTodos = todos.length;
    
-     console.log('Log 1');
-     
-   /*   React.useEffect(() => {
-        console.log('Log 2');
-     }, []) */
-   
-     React.useEffect(() => {
-        console.log('Log 2');
-     }, [totalTodos])
-   
-     console.log('Log 3');
-   
      const searchedTodos = todos.filter((item) =>{ 
          const todoText = item.text.toLocaleLowerCase();
          const searchText = searchValue.toLocaleLowerCase();

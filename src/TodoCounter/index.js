@@ -8,9 +8,9 @@ function TodoCounter(){
     totalTodos: total} = React.useContext(TodoContext);
 
     return (
-      <h1>
-        Has completado <span>{completed}</span> de <span>{total}</span> TODOS
-        </h1>
+      <>
+      {completed === total && total === 0 ? <h1>No tienes TODOS pendientes</h1> : <h1> Has completado <span>{completed}</span> de <span>{total}</span> TODOS</h1>}
+      </>
     );
   }
 

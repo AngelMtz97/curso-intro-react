@@ -3,7 +3,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    bottom: 0;
+    bottom: 5px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
 }
 
 .btn-container button{
@@ -21,7 +24,6 @@
     line-height: 23px;
     width: 300px;
     height: 40px;
-    position: fixed;
     margin-top: 100px;
 }
 
