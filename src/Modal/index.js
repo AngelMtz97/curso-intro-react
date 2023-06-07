@@ -15,7 +15,10 @@ function Modal({children}){
           <div></div>
           <span className="close" onClick={()=>{
             const modal = document.getElementsByClassName('modal-bg')[0];
-            modal.style.display = "none";
+            if(modal){
+              modal.style.display = "none";
+            }
+            
           }}>&times;</span>
         </div>
         
