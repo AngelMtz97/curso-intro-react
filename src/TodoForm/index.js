@@ -5,11 +5,14 @@ import { TodoContext } from "../TodoContext";
 function TodoForm(){
   const {
     addTodo,
+    editTodo,
+    editValue,
+    setEditValue,
     setOpenModal} = React.useContext(TodoContext);
-  const [newTodoValue, setNewTodoValue] = React.useState("");
+  const [newTodoValue, setNewTodoValue] = React.useState(editValue);
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+  const onSubmit = () => {
+
     addTodo(newTodoValue);
     setOpenModal(false);
     const listItems = document.getElementsByClassName('item-container');
@@ -20,8 +23,15 @@ function TodoForm(){
     
   }
 
+  const onSaveEdit = () => {
+      editTodo(newTodoValue);
+      setEditValue('');
+      setOpenModal(false);
+  }
+
   const onCancel = () => {
     setOpenModal(false);
+    setEditValue("");
   }
 
   const onChange = (event) =>{
@@ -29,8 +39,8 @@ function TodoForm(){
   }
 
   return (
-    <form onSubmit={onSubmit}>
-        <label>Nuevo TODO</label>
+    <div className="form-container">
+        <label>{editValue ? "Editar TODO" : "Nuevo TODO"}</label>
         <textarea 
            placeholder="Escribe un TODO"
            value={newTodoValue}
@@ -44,9 +54,13 @@ function TodoForm(){
             className="TodoForm-button TodoForm-button--cancel"
             >Cancelar</button>
 
-            <button type="submit" className="TodoForm-button TodoForm-button--add">Añadir</button>
+            {editValue 
+               ? <button onClick={onSaveEdit} className="TodoForm-button TodoForm-button--add">Guardar</button>
+               : <button onClick={onSubmit} className="TodoForm-button TodoForm-button--add">Añadir</button>
+            }
+            
         </div>
-    </form>
+    </div>
   );
 }
 

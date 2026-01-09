@@ -19,6 +19,7 @@
     margin-top: 10px;
     padding-left: 0px;
     padding-right: 10px;
+    margin-left: 100px;
 }
 
 
@@ -82,7 +83,7 @@
 
   .title-container-skeleton {
     margin-bottom: 48px;
-    margin-left: 80px;
+    margin-left: 100px;
     height: 20px;
   }
 

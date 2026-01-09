@@ -12,6 +12,7 @@ function TodoProvider({children}){
         error} = useLocalStorage('TODOS_V1', []);
      
      const [searchValue, setSearchValue] = React.useState('');
+     const [editValue, setEditValue] = React.useState('');
      const [openModal, setOpenModal] = React.useState(false);
    
      const completedTodos = todos.filter(item => {
@@ -35,6 +36,25 @@ function TodoProvider({children}){
             });
            saveTodos(newTodos);
      }
+
+     const editTodo = (newTexto) => {
+
+        const newTodos = [...todos];
+          
+        let itemIndex = newTodos.findIndex((item) => {
+          return item.text.toLocaleLowerCase() === editValue.toLocaleLowerCase();
+        })
+
+        newTodos[itemIndex] = {text: newTexto, completed:  newTodos[itemIndex].completed};
+
+        saveTodos(newTodos);
+
+     }
+
+     const itemEditHandler = (newEditValue) => {
+        setOpenModal(true);
+        setEditValue(newEditValue);
+     }
    
      const itemDeleteHandler = (value) => {
           const result = todos.filter((item) => {
@@ -46,7 +66,7 @@ function TodoProvider({children}){
    
      const itemDoneHandler = (value) => {
           const result = todos.map((item)=>{
-               return item.text === value ? {text : item.text, completed: true} : item;
+               return item.text === value ? {text : item.text, completed: !item.completed} : item;
           })
    
           saveTodos(result);
@@ -64,13 +84,17 @@ function TodoProvider({children}){
             completedTodos,
             totalTodos,
             searchValue,
+            editValue,
+            setEditValue,
             setSearchValue,
             searchedTodos,
+            itemEditHandler,
             itemDeleteHandler,
             itemDoneHandler,
             openModal,
             setOpenModal,
-            addTodo}}>
+            addTodo,
+            editTodo}}>
             {children}
         </TodoContext.Provider>
     )

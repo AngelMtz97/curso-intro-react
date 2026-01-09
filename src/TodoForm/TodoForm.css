@@ -1,5 +1,5 @@
 
-form {
+.form-container {
   width: 90%;
   max-width: 300px;
   display: flex;
