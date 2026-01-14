@@ -10,6 +10,7 @@ import { Modal } from '../Modal';
 import { TodoForm } from '../TodoForm';
 import React from 'react';
 import { TodoContext } from '../TodoContext';
+import { TodoHeader } from '../TodoHeader';
 
 
 function AppUI(){
@@ -22,14 +23,23 @@ function AppUI(){
         itemDeleteHandler,
         itemDoneHandler,
         itemEditHandler,
-        openModal
+        openModal,
+        completedTodos,
+        searchValue,
+        setSearchValue
     } = React.useContext(TodoContext);
 
     return (
         <React.Fragment>
-                    { !loading && (allTodosCompleted() ? <h1>Felicidades has completado todos los TODOs 💚</h1> : <TodoCounter />) }
 
-                    {!loading && <TodoSearch />}
+                    <TodoHeader>
+
+                        { !loading && (allTodosCompleted() ? <h1>Felicidades has completado todos los TODOs 💚</h1> 
+                        : <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos}/>) }
+
+                    {!loading && <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>}
+
+                    </TodoHeader>
 
                     <TodoList>
                         {loading && <TodosLoading />}
